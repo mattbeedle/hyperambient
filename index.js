@@ -20,7 +20,11 @@ const dark = require(ambientConfig.config.darkTheme || 'hyperterm-solarized-dark
 
 // Selected by taking multiple measurements from multiple inside and outside by
 // using the ambientlight library
-const threshold = require(ambientConfig.config.threshold || 15000000)
+let threshold
+if (ambientConfig.config.threshold)
+  threshold = ambientConfig.config.threshold
+else
+  threshold = 15000000
 
 exports.decorateConfig = (config) => {
   const lux = ambient()
